@@ -56,9 +56,11 @@ java -cp target/LivelinessDetection-1.0-SNAPSHOT.jar org.pinelab.liveliness.Live
 Here are screenshots of running the application with two different sets of frames:
 
 1. **Liveliness Detected** (sampleFramesTrue)
+
    ![Liveliness Confirmed](src/main/resources/Screensort/LivelinessTrue.png)
 
 2. **No Liveliness Detected** (sampleFramesFalse)
+
    ![No Liveliness Detected](src/main/resources/Screensort/LivelinessFalse.png)
 
 ### Using the Application with Any Set of Images

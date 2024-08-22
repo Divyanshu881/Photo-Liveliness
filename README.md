@@ -17,80 +17,18 @@ The core algorithm used in this project is a pixel change detection method. The 
 
 #### Component Diagram
 
-+-------------------------------------------------------------+
-| Liveliness Detection System |
-| |
-| +---------------------+ +----------------------+ |
-| | LivelinessDetectionApp | LivelinessDetectionServiceImpl |
-| +---------------------+ +----------------------+ |
-| | | |
-| +---------------------+ +----------------------+ |
-| | ImageLoader | | ImageProcessor |
-| +---------------------+ +----------------------+ |
-| | |
-| +---------------------+ +----------------------+ |
-| | Frame (Model) | | PixelChangeProcessor |
-| +---------------------+ +----------------------+ |
-+-------------------------------------------------------------+
+![Component_Diagram](src/main/resources/Screensort/ComponentDiagram.png)
 
 
 
 #### Sequence Diagram
 
-+-------------------------+        +----------------------------+        +--------------------------+        +-----------------+
-| LivelinessDetectionApp   |        | LivelinessDetectionServiceImpl |        | ImageProcessor            |        | Frame           |
-+-------------------------+        +----------------------------+        +--------------------------+        +-----------------+
-|                         |        |                            |        |                          |        |
-|                         |        |                            |        |                          |        |
-|--- main() -------------->|        |                            |        |                          |        |
-|                         |        |--- detectLiveliness() ---->|        |                          |        |
-|                         |        |                            |        |                          |        |
-|                         |        |--- loadFramesFromDirectory() -->    |                          |        |
-|                         |        |                            |        |                          |        |
-|                         |        |<--- list of Frame objects ---|      |                          |        |
-|                         |        |                            |        |                          |        |
-|                         |        |--- (loop over frames) ---->|        |                          |        |
-|                         |        |                            |        |                          |        |
-|                         |        |--- process() -------------->|        |                          |        |
-|                         |        |   (passing two Frame objects)   |   |                          |        |
-|                         |        |                            |        |                          |        |
-|                         |        |<--- true/false ------------|        |                          |        |
-|                         |        |                            |        |                          |        |
-|                         |        |--- continue loop if false -->      |                          |        |
-|                         |        |                            |        |                          |        |
-|                         |        |<--- return final result ---|        |                          |        |
-|                         |        |                            |        |                          |        |
-|<--- output result ------|        |                            |        |                          |        |
-+-------------------------+        +----------------------------+        +--------------------------+        +-----------------+
+![Sequence_Diagram](src/main/resources/Screensort/SequenceDiagram.png)
 
 
 ### File Structure
 
-LivelinessDetection/
-│
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   ├── org/
-│   │   │   │   ├── pinelab/
-│   │   │   │   │   ├── liveliness/
-│   │   │   │   │   │   ├── model/
-│   │   │   │   │   │   │   ├── Frame.java
-│   │   │   │   │   │   ├── services/
-│   │   │   │   │   │   │   ├── LivelinessDetectionService.java
-│   │   │   │   │   │   │   ├── LivelinessDetectionServiceImpl.java
-│   │   │   │   │   │   ├── processor/
-│   │   │   │   │   │   │   ├── ImageProcessor.java
-│   │   │   │   │   │   │   ├── PixelChangeProcessor.java
-│   │   │   │   │   │   ├── utils/
-│   │   │   │   │   │   │   ├── ImageLoader.java
-│   │   │   │   │   │   ├── LivelinessDetectionApp.java
-│   ├── resources/
-│   │   ├── sampleFramesTrue/
-│   │   ├── sampleFramesFalse/
-│   └── pom.xml
-│
-└── README.md
+![File_Structure](src/main/resources/Screensort/FileSystem.png)
 
 
 
@@ -110,7 +48,30 @@ If using the command line:
 ```bash
 mvn clean install
 java -cp target/LivelinessDetection-1.0-SNAPSHOT.jar org.pinelab.liveliness.LivelinessDetectionApp
+```
 
 
+### Result Screenshots
 
+Here are screenshots of running the application with two different sets of frames:
+
+1. **Liveliness Detected** (sampleFramesTrue)
+   ![Liveliness Confirmed](src/main/resources/Screensort/LivelinessTrue.png)
+
+2. **No Liveliness Detected** (sampleFramesFalse)
+   ![No Liveliness Detected](src/main/resources/Screensort/LivelinessFalse.png)
+
+### Using the Application with Any Set of Images
+
+To use this application with any set of images:
+
+1. Place your images in a new directory under `src/main/resources/`.
+2. Update the `frameDirectory` in `LivelinessDetectionApp` to point to your new directory.
+3. Run the application.
+
+### Future Scope
+
+- **Advanced Liveliness Detection**: Incorporate more sophisticated algorithms such as blink detection, facial movement, or texture analysis.
+- **Real-Time Detection**: Extend the system to work with real-time video streams rather than pre-captured frames.
+- **Scalability**: Enhance the system to handle large-scale deployments, potentially integrating with cloud services for distributed processing.
 

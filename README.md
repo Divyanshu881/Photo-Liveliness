@@ -73,7 +73,7 @@ To use this application with any set of images:
 
 ### Future Scope
 
-- **Advanced Liveliness Detection**: Incorporate more sophisticated algorithms such as blink detection, facial movement, or texture analysis.
+- **Advanced Liveliness Detection**: Incorporate more sophisticated algorithms such as blink detection, facial movement, or  texture analysis.
 - **Real-Time Detection**: Extend the system to work with real-time video streams rather than pre-captured frames.
 - **Scalability**: Enhance the system to handle large-scale deployments, potentially integrating with cloud services for distributed processing.
 
